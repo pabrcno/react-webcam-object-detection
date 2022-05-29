@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import Webcam from "react-webcam";
+import "./App.css";
+import { DetectionModel } from "./Model";
 
 function App() {
+  const webcamRef = React.useRef(null);
+  const canvasRef = React.useRef(null);
+  useEffect(() => {
+    const detectModel = new DetectionModel();
+    detectModel.run(webcamRef, canvasRef);
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <Webcam className="webcam" ref={webcamRef} />
+        <canvas className="canvas" ref={canvasRef}></canvas>
+      </div>
     </div>
   );
 }
