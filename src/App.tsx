@@ -13,7 +13,12 @@ function App() {
   return (
     <div className="App">
       <div>
-        <Webcam className="webcam" ref={webcamRef} />
+        <Webcam className="webcam" ref={webcamRef} videoConstraints={{
+    facingMode: "user", // Ensures it uses the front-facing camera
+  }}
+  style={{
+    transform: "scaleX(-1)",
+  }}/>
         <canvas className="canvas" ref={canvasRef}></canvas>
       </div>
     </div>

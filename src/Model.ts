@@ -74,8 +74,8 @@ export class DetectionModel {
       // clear everything each round
       ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
       chosen.forEach((detection) => {
-        ctx.strokeStyle = "#0F0";
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = "#00FF00";
+        ctx.lineWidth = 2;
         ctx.globalCompositeOperation = "destination-over";
         const detectedIndex = maxIndices[detection];
         const detectedClass = CLASSES[detectedIndex];
@@ -92,13 +92,13 @@ export class DetectionModel {
         // Draw the label background.
         ctx.globalCompositeOperation = "source-over";
         ctx.fillStyle = "transparent";
-        const textHeight = 16;
+        const textHeight = 8;
         const textPad = 4;
         const label = `${detectedClass} ${Math.round(detectedScore * 100)}%`;
         const textWidth = ctx.measureText(label).width;
         ctx.fillRect(startX, startY, textWidth + textPad, textHeight + textPad);
         // Draw the text last to ensure it's on top.
-        ctx.fillStyle = "#000000";
+        ctx.fillStyle = "#00FF00";
         ctx.fillText(label, startX, startY);
       });
     }
