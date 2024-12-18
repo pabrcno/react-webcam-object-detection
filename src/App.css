@@ -9,6 +9,7 @@
   width: 100vw;
   max-width: 900px;
   overflow-y: hidden;
+  border-radius: 10%;
 }
 
 .canvas {
